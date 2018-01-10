@@ -1,6 +1,17 @@
 <?php
+			function get_string_between($string, $start, $end){
+				    $string = ' ' . $string;
+				    $ini = strpos($string, $start);
+				    if ($ini == 0) return '';
+				    $ini += strlen($start);
+				    $len = strpos($string, $end, $ini) - $ini;
+				    return substr($string, $ini, $len);
+				}
+
+
+
 			$url = 'http://127.0.0.1:8000';
-			sd
+			
 			$contents = file_get_contents($url);
 			$json_inventory = (json_decode($contents,true)); // this will convert json object string to associative array
 
@@ -44,6 +55,16 @@
 										$inventoryTable.="<p style='font-family:sans-serif'><strong>Name :</strong>".$name."</p><br />" ;
 
 									}
+									else if($itemName=="market_name")
+									{	
+										$exterior = $itemValue;
+										$parsed = get_string_between($exterior, '(', ')');
+										if($parsed !==''){
+										$inventoryTable.="<p style='font-family:sans-serif'><strong>Exterior :</strong>".$parsed."</p><br />" ;}
+										
+
+
+									}
 									
 									else if($itemName=="image")
 									{
@@ -68,6 +89,18 @@
 									{
 										$assetid=$itemValue;
 										$inventoryTable.="<p style='font-family:sans-serif;'><strong>Asset Id:</strong>".$assetid."</p><br />" ;
+
+									}
+									else if($itemName=="market_name")
+									{	
+										
+										$exterior = $itemValue;
+										$parsed = get_string_between($exterior, '(', ')');
+										if($parsed !==''){
+										$inventoryTable.="<p style='font-family:sans-serif'><strong>Exterior :</strong>".$parsed."</p><br />" ;
+															}
+										
+
 
 									}
 									else if($itemName=="type")

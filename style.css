@@ -1,0 +1,19 @@
+body{
+	margin:0 auto;
+	background-color: #efefef ;
+}
+.inventory_wrapper {
+	
+	width : 70%;
+	height: auto;
+	margin-right: 15%;
+	margin-left: 15% ;
+}
+.content {
+	background-color: green ;
+	width : 80%;
+	height :auto;
+	margin-left :5%;
+	padding: 20px ;
+	margin-bottom: 5% ;
+}
